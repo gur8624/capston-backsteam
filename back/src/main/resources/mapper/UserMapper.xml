@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.caston.back.mapper.UserMapper">
+<!--    회원가입-->
+    <insert id="insertUser">
+        insert into User(u_email, u_pwd, u_phome, u_reg_dt) values(#{u_email, #{u_pwd}, #{u_phone}, sysdate)
+    </insert>
+<!--    로그인-->
+    <select id="loginUser" resultType="com.caston.back.domain.User">
+        select * from User where u_email= #{u_eamil} and u_pwd= #{u_pwd}
+    </select>
+<!--    회원정보 수정-->
+    <update id="updateUser">
+        update User set u_pwd= #{u_pwd}, u_phone= #{u_phone} where u_id =#{u_id}
+    </update>
+<!--    회원정보 찾기-->
+    <select id="findUser" resultType="com.caston.back.domain.User">
+        select * from User where u_phone= #{u_phone}
+    </select>
+
+</mapper>
